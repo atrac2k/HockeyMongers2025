@@ -1,0 +1,184 @@
+:root {
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --primary: #2c3e50;
+    --accent: #3498db;
+    --danger: #e74c3c;
+    --text: #333333;
+    --border: #dcdde1;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 900px;
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+h1 {
+    color: var(--primary);
+    margin-top: 0;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 10px;
+}
+
+.upload-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+@media (max-width: 600px) {
+    .upload-section { grid-template-columns: 1fr; }
+}
+
+.file-box {
+    border: 2px dashed var(--border);
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+    background: #fafafa;
+}
+
+.file-box label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: var(--primary);
+}
+
+.status {
+    font-size: 0.85rem;
+    margin-top: 5px;
+    color: #7f8c8d;
+}
+
+.status.loaded { color: #27ae60; font-weight: bold; }
+
+.control-section {
+    margin-bottom: 25px;
+    display: none;
+}
+
+select {
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    font-size: 1rem;
+}
+
+.roster-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.roster-table th, .roster-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.roster-table th {
+    background-color: #f8f9fa;
+    color: var(--primary);
+}
+
+.disabled-row {
+    color: #95a5a6;
+    background-color: #fbfbfb;
+}
+
+.badge {
+    background: #95a5a6;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 0.8rem;
+}
+
+.badge.undrafted { background: #e67e22; }
+.badge.banned { background: var(--danger); }
+
+.summary-card {
+    background: #edf2f7;
+    border-left: 4px solid var(--accent);
+    padding: 15px;
+    margin-top: 25px;
+    border-radius: 0 4px 4px 0;
+    display: none;
+}
+
+.summary-card h3 { margin-top: 0; color: var(--primary); }
+
+.summary-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.summary-list li {
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+}
+
+.undrafted-player {
+    color: #e67e22;
+    font-weight: bold;
+}
+
+/* Switches traded player historical team tags to red */
+.traded-player {
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.team-stats-panel {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    background: #f4f4f4;
+    border-radius: 6px;
+    font-size: 0.9em;
+}
+
+.position-boundary td {
+    border-top: 3px solid #2c3e50;
+}
+
+.badge.three-season-warning {
+    background: #e67e22;
+    color: #fff;
+}
+
+.three-season-explanation {
+    width: 100%;
+    font-size: 0.85em;
+    color: #e67e22;
+    margin-top: 4px;
+}
+
+.badge.tie-breaker {
+    background: #f1c40f;
+    color: #2c2c2c;
+}
+

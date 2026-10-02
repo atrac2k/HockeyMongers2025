@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 Draft Grades | Hockey Mongers</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="draft.css">
+</head>
+<body>
+<div class="container">
+    <h1>2026 Draft Grades</h1>
+    <p class="method">
+        <strong>Roster grade:</strong> total projected fantasy points across each team's 17 players (keepers included).<br>
+        <strong>ADP grade:</strong> average of (overall pick &minus; ADP) across real draft picks in all 17 rounds, keepers excluded. Positive = value, negative = reach.<br>
+        <strong>Overall:</strong> 50/50 blend. Grades are curved against the league.<br>
+        <strong>Playoff %:</strong> a simulation, not a projection &mdash; assumes the top 6 of 12 teams make the playoffs and applies random season-to-season variance around each team's total ProjPoints. Click a column header to sort, click a team row for details.
+    </p>
+    <div class="table-wrap">
+    <table class="roster-table" id="gradeTable">
+        <thead><tr>
+            <th>#</th>
+            <th data-key="team">Team</th>
+            <th data-key="overall">Overall</th>
+            <th data-key="roster">Roster</th>
+            <th data-key="projTotal">Total ProjPts</th>
+            <th data-key="adp">ADP Value</th>
+            <th data-key="adpAvg">Avg vs ADP</th>
+            <th data-key="playoff">Playoff %</th>
+        </tr></thead>
+        <tbody id="gradeBody"><tr><td colspan="8">Loading...</td></tr></tbody>
+    </table>
+    </div>
+
+    <h2 class="section-title">Draft Steals <span class="muted">(top 10 picks made later than ADP)</span></h2>
+    <div class="table-wrap">
+    <table class="roster-table">
+        <thead><tr><th>#</th><th>Player</th><th>Fantasy Team</th><th>Pick</th><th>ADP</th><th>vs ADP</th></tr></thead>
+        <tbody id="stealsBody"></tbody>
+    </table>
+    </div>
+
+    <h2 class="section-title">Draft Stinkers <span class="muted">(top 10 picks made earlier than ADP)</span></h2>
+    <div class="table-wrap">
+    <table class="roster-table">
+        <thead><tr><th>#</th><th>Player</th><th>Fantasy Team</th><th>Pick</th><th>ADP</th><th>vs ADP</th></tr></thead>
+        <tbody id="stinkersBody"></tbody>
+    </table>
+    </div>
+    <p class="muted">Keepers are excluded. Players with no ADP are counted as going after pick 152 and are never listed as steals.</p>
+</div>
+
+<!-- Team Detail Modal -->
+<div id="modalOverlay" class="modal-overlay">
+    <div class="modal-box wide-modal">
+        <button type="button" id="modalClose" class="close-btn" aria-label="Close team details">&times;</button>
+        <h2 id="modalTitle"></h2>
+
+        <div class="chart-row">
+            <div class="chart-box">
+                <h4>Fantasy Points by Position vs League</h4>
+                <div class="chart-canvas-wrap"><canvas id="radarCanvas"></canvas></div>
+            </div>
+            <div class="chart-box">
+                <h4>Pick vs ADP by Round</h4>
+                <div class="chart-canvas-wrap"><canvas id="lineCanvas"></canvas></div>
+                <p class="muted chart-legend">Green = value, red = reach, grey dashed = keeper (shown for context, not graded)</p>
+            </div>
+        </div>
+
+        <div id="modalSummary" class="summary-text"></div>
+
+        <div class="picks-grid">
+            <div>
+                <h4>Top 5 Picks by ADP Value</h4>
+                <div class="table-wrap">
+                <table class="roster-table small-table">
+                    <thead><tr><th>Player</th><th>Pos</th><th>Pick</th><th>ADP</th><th>ProjPts</th><th>vs ADP</th></tr></thead>
+                    <tbody id="top5Body"></tbody>
+                </table>
+                </div>
+            </div>
+            <div>
+                <h4>Bottom 5 Picks by ADP Value</h4>
+                <div class="table-wrap">
+                <table class="roster-table small-table">
+                    <thead><tr><th>Player</th><th>Pos</th><th>Pick</th><th>ADP</th><th>ProjPts</th><th>vs ADP</th></tr></thead>
+                    <tbody id="bottom5Body"></tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="chart.umd.min.js"></script>
+<script src="draft.js"></script>
+</body>
+</html>
